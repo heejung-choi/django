@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'pages/stylesheets/style.css' %}">
+{% endblock  %}
+
+{% block content %}
+  <h1>두번째 앱의 index !</h1>
+  <img src="{% static 'eva-green.jpg' %}" alt="">
+  <img src="{% static 'pages/images/sample-image.png' %}" alt="">
+{% endblock %}

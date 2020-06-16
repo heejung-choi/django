@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>회문 판별</h1>
+  {% if result %}
+    <p>회문입니다!!!</p>
+  {% else %}
+    <p>회문이 아닙니다!!!</p>
+  {% endif %}
+{% endblock %}

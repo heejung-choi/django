@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>여기는 catch입니다.</h1>
+  <h2>제가 받은 데이터는 {{ message }} 입니다.</h2>
+  {% for msg in msg_list%}
+    <h2>{{ msg }}</h2>
+  {% endfor %}
+{% endblock %}
