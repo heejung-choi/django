@@ -31,4 +31,17 @@ def create(request):
 
     #Article.objects.create(title=title, content=content)
 
+    return redirect('articles:detail', article.pk)
+
+def detail(request, pk):
+    article = Article.objects.get(pk=pk)
+    # 왼쪽 : article 클래스가 가진 pk , 오른쪽 variable routing 에서 보내준 값
+    context = {
+        'article': article,
+    }
+    return render(request, 'articles/detail.html', context)
+
+def delete(request, pk):
+    article=Article.objects.get(pk=pk)
+    article.delete()
     return redirect('articles:index')
