@@ -2,6 +2,7 @@
 
 {% block content %}
   <h1 class="text-center">Articles</h1>
+  <a href="{% url 'articles:new' %}">NEW</a>
   <hr>
   {% for article in articles %}
     <p>글 번호 : {{ article.pk }}</p>

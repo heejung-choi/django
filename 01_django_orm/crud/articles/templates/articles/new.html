@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>NEW</h1>
+<form action="{% url 'articles:create' %}" method="GET">
+<input type="text" name="title"><br>
+<textarea name="content"></textarea>
+<button class="btn btn-primary">작성</button>
+<input type="submit">
+</form>
+{% endblock %}
