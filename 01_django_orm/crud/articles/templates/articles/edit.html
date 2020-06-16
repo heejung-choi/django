@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>EDIT</h1>
+    <form action="{% url 'articles:update' article.pk%}" method="POST">
+        {% csrf_token %}
+        <!--csrf 속성을 줌으로써 간단하게 보안유지를 할 수 있다.-->
+        <input type="text" name="title" value="{{ article.title }}"><br>
+        <textarea name="content">{{ article.content }}</textarea><br>
+        <button class="btn btn-primary">수정</button>
+    </form>
+{% endblock %}

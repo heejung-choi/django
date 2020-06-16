@@ -42,6 +42,27 @@ def detail(request, pk):
     return render(request, 'articles/detail.html', context)
 
 def delete(request, pk):
+    print(request)
     article=Article.objects.get(pk=pk)
-    article.delete()
-    return redirect('articles:index')
+    if request.method == 'POST':
+        article.delete()
+        return redirect('articles:index')
+    else:
+        return redirect('articles:detail', article.pk)
+
+def edit(request, pk):
+    article = Article.objects.get(pk=pk)
+    context = {
+         'article': article,
+    }
+    return render(request, 'articles/edit.html', context)
+
+def update(request, pk):
+    article = Article.objects.get(pk=pk)
+    # 1. edit에서 보낸 데이터 받기
+    # 기존 값에 할당
+    article.title = equest.POST.get('title')
+    article.content = request.POST.get('content')
+    article.save()
+    return redirect('articles:detail', article.pk)
+
