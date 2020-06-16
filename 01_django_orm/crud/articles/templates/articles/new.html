@@ -2,7 +2,9 @@
 
 {% block content %}
 <h1>NEW</h1>
-<form action="{% url 'articles:create' %}" method="GET">
+<form action="{% url 'articles:create' %}" method="POST">
+{% csrf_token %}
+<!--csrf 속성을 줌으로써 간단하게 보안유지를 할 수 있다.-->
 <input type="text" name="title"><br>
 <textarea name="content"></textarea>
 <button class="btn btn-primary">작성</button>

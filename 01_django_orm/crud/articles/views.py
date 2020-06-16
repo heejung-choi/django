@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Article
 
 # Create your views here.
@@ -14,8 +14,8 @@ def new(request):
 
 def create(request):
     # 1. new에서 보낸 데이터 받기
-    title = request.GET.get('title')
-    content = request.GET.get('content')
+    title = request.POST.get('title')
+    content = request.POST.get('content')
 
     # 2. db에 저장
     # article = Article()
@@ -31,4 +31,4 @@ def create(request):
 
     #Article.objects.create(title=title, content=content)
 
-    return render(request, 'articles/index.html')
+    return redirect('articles:index')
