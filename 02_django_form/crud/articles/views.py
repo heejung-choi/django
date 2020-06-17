@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
+from django.views.decorators.http import require_http_methods, require_POST
 from .models import Article
 from .forms import ArticleForm
-
+# decorators: 함수의 추가 기능을 붙일때 
 # Create your views here.
 def index(request):
     articles = Article.objects.all()
@@ -10,7 +11,7 @@ def index(request):
     }
     return render(request, 'articles/index.html', context)
 
-
+@require_http_methods(["GET", "POST"])
 def create(request):
     # http method POST 일 때
     if request.method == 'POST':
@@ -20,7 +21,7 @@ def create(request):
             return redirect('articles:detail', article.pk)
     # POST가 아닌 다른 methods 일 때
     else: 
-        form = ArticleForm()
+        form = ArticleForm(instance=article)
     context = {
         # form 2가지 모습
         # 1. is_valid()에서 통과하지 못한 form (에러메세지를 포함)
@@ -37,7 +38,7 @@ def detail(request, pk):
     }
     return render(request, 'articles/detail.html', context)
 
-
+@require_http_methods(["GET", "POST"])
 def update(request, pk):
     article = Article.objects.get(pk=pk)
     if request.method == 'POST':
@@ -52,7 +53,7 @@ def update(request, pk):
     }
     return render(request, 'articles/update.html', context)
 
-
+@require_POST()
 def delete(request, pk):
     article = Article.objects.get(pk=pk)
     if request.method == 'POST':
