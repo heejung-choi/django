@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+{% comment %} 반드시 extends는 맨위에 {% endcomment %}
+{% block content %}
+<h1>UPDATE</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">
+    Submit
+    </button><br>
+</form>
+<button class="btn btn-primary">수정</button>
+</form>
+{% endblock %}

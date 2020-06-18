@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}  
+  <hr>
+  <h1><a href="{% url 'movies:create' %}">영화 등록하기</a></h1>
+  <h1>이달의 상영</h1>
+  {% for movie in movie %}
+    <p>영화 번호 : {{ movie.pk }}</p>
+    <p>영화 제목 : <a href="{% url 'movies:detail' movie.pk %}">{{ movie.title }}</a></p>
+    <p>영화 평점 : {{ movie.score }}</p> 
+    <hr>
+  {% endfor %}
+{% endblock  %}w도망쳐<div class="">
+도망쳐div>

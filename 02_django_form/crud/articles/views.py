@@ -21,7 +21,7 @@ def create(request):
             return redirect('articles:detail', article.pk)
     # POST가 아닌 다른 methods 일 때
     else: 
-        form = ArticleForm(instance=article)
+        form = ArticleForm()
     context = {
         # form 2가지 모습
         # 1. is_valid()에서 통과하지 못한 form (에러메세지를 포함)
