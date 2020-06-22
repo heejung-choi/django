@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Article
+from .models import Article, Comment
 
 # Register your models here.
 class ArticleAdmin(admin.ModelAdmin):
@@ -8,3 +8,4 @@ class ArticleAdmin(admin.ModelAdmin):
 
 admin.site.register(Article, ArticleAdmin)
 # admin site에 등록(register) 하겠다.
+admin.site.register(Comment)

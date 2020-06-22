@@ -22,4 +22,17 @@
   <input type="text" name="content">
   <button class="btn btn-primary">작성</button>
   </form>
+
+  <hr>
+  <!--{{ article.comment_set.all }}
+  <QuerySet [<Comment: Comment object (1)>, <Comment: Comment object (2)>, <Comment: Comment object (3)>]>
+ -->
+  {% for comment in article.comment_set.all%}
+    <p>{{ comment.content }}</p>
+    <form action="{% url 'articles:comment_delete' article.pk comment.pk %}" method="POST">
+    {% csrf_token %}
+    <button>삭제</button>
+    </form>     
+  {% endfor %}  
+  <!--html에서는 ()을 빼줘야 하기 때문에 all 뒤에 ()를 빼줬다.-->
 {% endblock %}

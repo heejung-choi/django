@@ -66,3 +66,8 @@ def comment_create(request, pk):
     Comment.objects.create(article=article, content=content)
     # = 뒤에 있는 변수가 위에 선언한 변수
     return redirect('articles:detail', pk)
+
+def comment_delete(request, article_pk, comment_pk):
+    comment = Comment.objects.get(pk=comment_pk)
+    comment.delete()
+    return redirect('articles:detail', article_pk) 
