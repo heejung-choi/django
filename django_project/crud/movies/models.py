@@ -11,3 +11,7 @@ class Movie(models.Model):
     score = models.FloatField()
     poster_url = models.TextField()
     descripthon = models.TextField()
+
+class Comment(models.Model):
+    content = models.TextField()
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)

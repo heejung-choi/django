@@ -1,5 +1,5 @@
 from django import forms
-from .models import Movie
+from .models import Movie, Comment
 
 # title = models.CharField(max_length=50)
 # title_en = models.CharField(max_length=50)
@@ -105,4 +105,9 @@ class MovieForm(forms.ModelForm):
     class Meta:
         model = Movie        
         fields = '__all__'
- 
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ['content',]

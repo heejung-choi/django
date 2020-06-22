@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Movie
+from .models import Movie, Comment
 
 # Register your models here.
 class MovieAdmin(admin.ModelAdmin):
@@ -7,4 +7,5 @@ class MovieAdmin(admin.ModelAdmin):
     list_editable = ['title']    
 
 admin.site.register(Movie, MovieAdmin)
+admin.site.register(Comment)
 # admin site에 등록(register) 하겠다.

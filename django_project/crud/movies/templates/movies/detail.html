@@ -21,4 +21,20 @@
     <button>delete</button>
   </form>
   <a href="{% url 'movies:index' %}">back</a>
+
+  <form action="{% url 'movies:comment_create' movie.pk %}" method="POST">
+    {% csrf_token %}    
+    {{ form }}
+    <!--<input type="text">-->    
+    <button class="btn btn-primary">작성</button>
+  </form>
+
+  <hr>
+  {% for comment in movie.comment_set.all %}
+  <p>{{ comment.content }}</p>
+  <form action="{% url 'movies:comment_delete' movie.pk comment.pk%}" method="POST">
+  {% csrf_token %}
+  <button>삭제</button>
+  </form>
+  {% endfor %}
 {% endblock %}
