@@ -19,7 +19,8 @@
 
   <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
   {% csrf_token %}
-  <input type="text" name="content">
+  <!--<input type="text" name="content">-->  
+  {{ form }}
   <button class="btn btn-primary">작성</button>
   </form>
 
