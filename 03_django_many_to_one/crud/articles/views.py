@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods, require_POST
-from .models import Article
+from .models import Article, Comment
 from .forms import ArticleForm
 
 # Create your views here.
@@ -43,10 +43,12 @@ def update(request, pk):
         if form.is_valid():
             form.save()
             return redirect('articles:detail', article.pk)
+            # 비어있는 곳에 저장하는 것 
     else:
         form = ArticleForm(instance=article)
     context = {
         'form': form,
+        # 비어있는 곳을 보내주는 것
     }
     return render(request, 'articles/update.html', context)
 
@@ -56,3 +58,10 @@ def delete(request, pk):
     article = Article.objects.get(pk=pk)
     article.delete()
     return redirect('articles:index') 
+
+def comment_create(request, pk):
+    article = Article.objects.get(pk=pk) # 오른쪽의 pk가 request옆의 pk다
+    content = request.POST.get('content')
+
+    Comment.objects.create(article=article, content=content)
+    # = 뒤에 있는 변수가 위에 선언한 변수

@@ -15,4 +15,11 @@
     <button class="btn btn-danger">delete</button>
   </form><br>
   <a href="{% url 'articles:index' %}">back</a>
+  <hr>
+
+  <form action="{% url 'articles:comment_create' article.pk %}" method="POST">
+  {% csrf_token %}
+  <input type="text" name="content">
+  <button class="btn btn-primary">작성</button>
+  </form>
 {% endblock %}

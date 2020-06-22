@@ -42,6 +42,9 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # 1. local app
+    # 2. 3rd party app
+    # 3. Django apps
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
