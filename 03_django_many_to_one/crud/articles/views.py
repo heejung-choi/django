@@ -61,7 +61,10 @@ def delete(request, pk):
     article.delete()
     return redirect('articles:index') 
 
+@require_POST
 def comment_create(request, pk):
+    # if request.method == 'POST':를 해도 되지만 어차피 여기에는 post 방식만 되기 때문에
+    # @require_POST을 해준다.
     article = Article.objects.get(pk=pk) # 오른쪽의 pk가 request옆의 pk다
     #content = request.POST.get('content')
     #Comment.objects.create(article=article, content=content)
@@ -70,8 +73,7 @@ def comment_create(request, pk):
     if form.is_valid():
         comment = form.save(commit=False)
         comment.article = article
-        comment.save()
-        
+        comment.save()        
         print(comment)
         #  print(comment) -> Comment object (None) 이라고 나온다.
         # save를 하기 전에 상태가 있었는데 , aricle object non이라는 상태이다.
