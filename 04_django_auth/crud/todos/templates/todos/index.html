@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>index</h1>
+<form action="{% url 'todos:create' %}" method="POST">
+    {% csrf_token %}
+    {{form}}
+    <button>저장</button>
+</form>
+
+<hr>
+{% for todo in user.todo_set.all %}
+    <h5>{{todo.content}}</h5>
+
+{% endfor %}
+{% endblock %}
