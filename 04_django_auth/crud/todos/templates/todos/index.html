@@ -11,6 +11,9 @@
 <hr>
 {% for todo in user.todo_set.all %}
     <h5>{{todo.content}}</h5>
-
+    <form action="{% url 'todos:delete' todo.pk %}" method="POST">
+        {% csrf_token %}
+        <button>삭제</button>
+    </form>
 {% endfor %}
 {% endblock %}

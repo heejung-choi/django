@@ -22,3 +22,9 @@ def create(request):
         todo.user = request.user
         todo.save()
         return redirect('todos:index')
+
+@login_required
+def delete(request, pk):
+    todo = Todo.objects.get(pk=pk)
+    todo.delete()
+    return redirect('todos:index')
