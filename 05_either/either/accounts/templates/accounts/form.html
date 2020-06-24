@@ -1,5 +1,25 @@
 {% extends 'base.html' %}
-
 {% block content %}
-{{ form }}
+
+
+<!--
+<h1>{{request}}</h1>
+여기 안에는 많은 것들이 담겨져 있다.
+django에서는 url이 문자열로 변환이 된다. 그 가눙 resolver가 해준다.
+-->
+
+<h1>{{request.resolver_match.url_name}}</h1>
+{% if request.resolver_match.url_name == 'signup' %}
+    <h1>회원가입</h1>
+{% else %}
+    <h1>로그인</h1>
+{% endif %}
+
+
+<form action="" method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<button>저장</button>
+</form>
+
 {% endblock  %}

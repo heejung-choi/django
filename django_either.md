@@ -29,3 +29,10 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
+
+
+## django UserCreationForm 구조
+
+
+
+<img width="300" height="500" alt="캡처" src="https://user-images.githubusercontent.com/58652391/85488538-6e513c80-b609-11ea-8e9a-3040ca6169df.PNG">
