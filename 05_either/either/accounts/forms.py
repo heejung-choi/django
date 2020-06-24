@@ -10,7 +10,7 @@ class CustomUserCreationForm(UserCreationForm):
 # 지금 상태에서는 Custom이나 UserCreationForm이나 다를것 이 없다.
     class Meta:
         model = get_user_model()
-        fields = {'username', 'password1', 'password2', 'phone'}
+        fields = ['username', 'password1', 'password2', 'phone']
 
 # django에서는 user에 대한 기능을 자동화 해놓은 경우가 많다.
 # 이것을 편하게하기 위해 settings에 AUTH_USER_MODEL = 'accounts.User' 이렇게 설정을 해두었다.
