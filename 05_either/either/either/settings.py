@@ -121,4 +121,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#AUTH_USER_MODEL = 'auth.User' 가 원래 되어있는 상태이다.
 AUTH_USER_MODEL = 'accounts.User'
