@@ -46,4 +46,4 @@ def login(request):
 
 def logout(request):    
     auth_logout(request)
-    return redirect('account:login')
+    return redirect('accounts:login')

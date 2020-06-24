@@ -36,3 +36,15 @@ python manage.py migrate
 
 
 <img width="300" height="500" alt="캡처" src="https://user-images.githubusercontent.com/58652391/85488538-6e513c80-b609-11ea-8e9a-3040ca6169df.PNG">
+
+
+
+<img width="405" alt="캡처" src="https://user-images.githubusercontent.com/58652391/85501512-7bc5f100-b620-11ea-8786-44159abe02f1.PNG">
+
+
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block  content %}
+<!-- {{ question }} 전체 출력할 때에는 !-->
+{{ question.title }}
+{{ question.answer_a }}
+{{ question.answer_b }}
+
+<hr>
+<form action="{% url 'questions:answer_create' question.pk %}" method="POST">
+{% csrf_token %}
+{{  answer_form }}
+<br>
+<button class="btn-lg btn btn-outline-info"><img src="https://user-images.githubusercontent.com/58652391/85506002-7ff70c00-b62a-11ea-96c6-15d0a378fd82.png" 
+width="50px" height="50px">&nbsp; 내마음속에 저장</button>
+</form>
+
+{% for answer in  question.answer_set.all %}
+    {{ answer.choice }}
+{% endfor %}
+
+{{ answer_a }}
+{{ answer_b }}
+
+{% endblock  %}
