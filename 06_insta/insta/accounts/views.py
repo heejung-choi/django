@@ -4,6 +4,7 @@ from .forms import CustomUserCreationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def signup(request):
@@ -57,3 +58,30 @@ def profile(request, username):
     }
 
     return render(request, 'accounts/profile.html', context)
+
+@ login_required
+def follow(request,user_pk):
+    me = request.user   
+    you = get_object_or_404(get_user_model(),pk=user_pk)
+
+    # if 팔로우 요청이 자기 자신이면, 
+    if me == you:
+        return redirect('posts.index')
+    
+    
+        
+    # 누가(로그인한 사람) 누구를(you) 팔로워 하는지..
+    # 상대방의 팔로워 목록에 내가 있는지, 나의 팔로워 목록에 상대방이 있는지 체크
+
+    if you in me.follow.all():
+        # you in me.follower.all(): 기준점을 어디에 두냐의 차이
+        # 너를 팔로워 하고 있는 사람 목록에 내가 있는지
+        # 너의 팔로워 목록에 있으면(이미 팔로우 하고있었음)
+        #you.follower.remove(me)
+        me.follow.remove(you)
+
+    else:
+        #아직 팔로우 안했음
+        #you.follower.add(me)
+        me.follow.add(you)
+    return redirect('accounts:profile', you.username)

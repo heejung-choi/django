@@ -1,7 +1,7 @@
 <div class="card m-3">
   <h5 class="card-header">
     <img class="rounded-circle" src="https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-19/s150x150/92822152_547335922653801_7878435854547419136_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_ohc=_vyuCoGMVoQAX-sxxS6&oh=0f1b435583bcfabe617c3527edbb8d88&oe=5F1CEDE6" alt="" witdh="50px" height="50px">
-    <a href="{% url 'accounts:profile' post.username %}">{{ post.user.username }}</a>
+    <a href="{% url 'accounts:profile' post.user.username %}">{{ post.user.username }}</a>
   </h5>
   <img src="{{ post.image.url }}" class="card-img-top">
   <div class="card-body">

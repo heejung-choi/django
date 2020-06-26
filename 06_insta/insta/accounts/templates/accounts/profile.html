@@ -1,4 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{ user_profile.username }}profile</h1>
-{% endblock  %}
+    <!--jumbotron start-->
+    <div class="jumbotron">
+    <!--bootstrap에서 회색상자-->
+        <div class="row">
+        <div class="col-4">
+            <div class="row">
+                <img  class="rounded-circle col-12" src="{{ user_profile.image.url }} " >
+            </div>
+        </div>
+        <div class="col-8">유저정보 출력</div>
+            <!--사용자의 이름-->
+            <br><br>
+            <h5>{{ user_profile.username }}</h5>
+            <p>팔로우 {{ user_profile.follow.count }}명 팔로워 {{ user_profile.follower.count }}명</p>
+        </div>
+    </div>
+    <hr>
+    <div class="row row-cols-3">
+    {% for post in user_profile.post_set.all %}     
+        <div class="col">
+            <div class="card">
+                <img src="{{ post.image.url }}" width='200px' height='200px'>   
+            </div>
+        </div>
+    {% endfor %}
+    
+    </div>
+    <!--jumbotron end-->
+<!--로그인 한 사람이 ... -->
+    {% if user !=  user_profile %}
+        {% if user_profile in user.follow.all %}
+            <a  class='btn btn-primary' href="{% url 'accounts:follow' user_profile.id %}">팔로우 취소</a>    
+        {% else %}
+            <a  class='btn btn-primary' href="{% url 'accounts:follow' user_profile.id %}">팔로우</a>    
+        {% endif %}
+    {% endif %}
+{% endblock %}
