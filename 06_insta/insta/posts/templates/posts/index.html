@@ -4,4 +4,61 @@
     {% for post in posts %}
       {% include 'posts/card.html' %}
     {% endfor %}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+  // 1. 누구를
+  var likeButtons = document.querySelectorAll('.fa-heart')
+  //document : 문서 전체를 의미
+  //class가 fa-heart인 것을 모두 가져와라
+  //console.log(likeButtons)
+  //아래와 같이 출력된다.
+  // NodeList(5) [i#post5.fas.fa-heart.fa-2x, i#post4.fas.fa-heart.fa-2x, i#post3.far.fa-heart.fa-2x, i#post2.far.fa-heart.fa-2x, i#post1.fas.fa-heart.fa-2x]
+  likeButtons.forEach(function(likeButton){
+  //console.log(likeButton)
+  //하나씩 뽑아오게 된다.
+  // 2. 어떻게 했을 때
+    likeButton.addEventListener('click', function(event){
+      //console.log(event.target)
+      //console.log(event.target.dataset.id)
+      //axios.get('/posts/12/like/')
+      //좋아요 버튼을 누르는 경로로 보낸다.
+      //axios.get('/posts/12/like/') 사용자가 12번 데이터를 보냈는데?
+      var targetId = event.target.dataset.id
+      axios.get(`/posts/${targetId}/like/`)
+      .then(function(res){        
+        console.log(res.data.liked)
+        //naver.com/asdf/123/456 이라고 했다고 가정하면
+        // /naver.com -> naver/com/naver.com
+        // 루트가 붙게 되면 최상단으로 간다음 거기의 posts부터 시작해 라는 뜻이 된다.
+        if(res.data.liked){
+          //좋아요를 누른 경우
+          event.target.style.color = 'red'
+          event.target.classList.remove('far')
+          event.target.classList.add('fas')
+        }
+        else{
+          //취소를 누른 경우
+          event.target.style.color = 'black'
+          event.target.classList.remove('fas')
+          event.target.classList.add('far')
+        }
+
+
+      }).catch()
+      //.then().catch() then 성공 catch 실패했을 때 !
+      //한줄로 인식된다 코드가.
+        
+      //axios.get('/posts/'+targetId+'/like/')와 동일
+      //숫자 1옆에 있는 ` 를 사용하면 된다.
+    })                                                         
+    // 'click' 를 기다렸다가 function(){} 를 하라고 해야한다.
+  })
+  //for likeButtion in likeButtons 와 같다.
+
+
+  
+  
+  // 3. 뭐뭐를 한다.
+  </script>
 {% endblock %}
