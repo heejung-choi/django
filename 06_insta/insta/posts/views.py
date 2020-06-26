@@ -15,7 +15,7 @@ def index(request):
 @login_required
 def create(request):
     if request.method == 'POST':
-        form = PostForm(request.POST, request.FILES)
+        form = PostForm(request.POST, request.FILES) #사진도 같이 저장
         if form.is_valid():
             post = form.save(commit=False)
             post.user = request.user
