@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<h1>NEW</h1>
+<form action="{% url 'articles:create' %}" method="POST">
+  {% csrf_token %}
+  {% bootstrap_form form%}
+  <button class="btn btn-primary">작성</button>
+</form>
+{% endblock %}
