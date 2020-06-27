@@ -4,17 +4,18 @@ from .models import Article
 from .forms import ArticleForm
 from django.core.paginator import Paginator
 
-
 # Create your views here.
 def index(request):
     articles = Article.objects.all()
     paginator = Paginator(articles, 2)
+    #5 : 보여주고 싶은 페이지 수 
 
     page_number = request.GET.get('page')
     articles = paginator.get_page(page_number)
-
+    
     context = {
         'articles': articles,
+        
     }
     return render(request, 'articles/index.html', context)
 

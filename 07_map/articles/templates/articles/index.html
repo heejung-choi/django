@@ -11,6 +11,22 @@
     <a href="{% url 'articles:detail' article.pk %}">DETAIL</a>
     <hr>
   {% endfor %}
-  {% bootstrap_pagination articles %}
+  {% comment %} <div class="pagination">
+    <span class="step-links">
+        {% if articles.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ articles.previous_page_number }}">previous</a>
+        {% endif %}
 
+        <span class="current">
+            Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
+        </span>
+
+        {% if articles.has_next %}
+            <a href="?page={{ articles.next_page_number }}">next</a>
+            <a href="?page={{ articles.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div> {% endcomment %}
+{% bootstrap_pagination articles pages_to_show="2" %}
 {% endblock %}

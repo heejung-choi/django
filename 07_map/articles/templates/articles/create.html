@@ -2,9 +2,68 @@
 {% load bootstrap4 %}
 {% block content %}
 <h1>NEW</h1>
+<div id="map" style="width:500px;height:400px;"></div>
 <form action="{% url 'articles:create' %}" method="POST">
   {% csrf_token %}
   {% bootstrap_form form%}
   <button class="btn btn-primary">작성</button>
 </form>
+<script>
+//1.지도 그릴 공간을 찾기 (아래 인자로 넣기 위해)
+//var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+var container = document.querySelector('#map'); //지도를 담을 영역의 DOM 레퍼런스
+//최신 방법으로 찾아오기 : querySelector/ # 표시해서 id 임을 명시 해줘야함
+
+//2. 지도 옵션 설정 : options에는 Object(=dictionary랑 비슷한 개념)가 들어가야함 (아래 두번째 인자로 넣기 위해)
+var options = { //지도를 생성할 때 필요한 기본 옵션
+	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+	level: 3, //지도의 레벨(확대, 축소 정도)
+  //draggable: false,  이 속성 주면 드래그 안되뮤 
+};
+
+//3.지도 생성
+var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+//4. 마커 생성: 지도를 클릭한 위치에 표출할 마커입니다
+var marker = new kakao.maps.Marker({ 
+    // 지도 중심좌표에 마커를 생성합니다 
+    position: map.getCenter() 
+}); 
+
+//5. 마커 추가 : 지도에 마커를 표시합니다
+marker.setMap(map);
+
+kakao.maps.event.addListener(map, 'click', function(mouseEvent) {        
+//(내가 이벤트 걸고 싶은 객체, 어떤 이벤트, 이벤트 발생시 뭐를 실행 시킬지)    
+    
+    // 클릭한 위도, 경도 정보를 가져옵니다 
+    var latlng = mouseEvent.latLng; 
+    //클릭 이벤트에 즈으장
+
+    // 마커 위치를 클릭한 위치로 옮깁니다
+    marker.setPosition(latlng);
+    //마커야 사용자가 만금 클릭한 위치로 이동해
+
+    //var message = '클릭한 위치의 위도는 ' + 
+    
+    //위도
+    latlng.getLat()
+    var latInput = document.querySelector('#id_lat')
+    latInput.value = latlng.getLat()
+    // + ' 이고, ';
+    //message += '경도는 ' + 
+    
+    //경도
+    latlng.getLng()
+    var lngInput = document.querySelector('#id_lng')
+    lngInput.value = latlng.getLng()
+    // + ' 입니다';
+    
+    // 첫번째 클릭 시에만 적용되고, 그 이후에는 적용이 안되는데 ,아래 두줄 지우면 된다링가링가링
+    //var resultDiv = document.getElementById('clickLatlng'); 
+    // resultDiv.innerHTML = message;
+    
+});
+</script>
+
 {% endblock %}

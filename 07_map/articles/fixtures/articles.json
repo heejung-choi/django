@@ -3,60 +3,60 @@
   "model": "articles.article",
   "pk": 1,
   "fields": {
-    "title": "title",
-    "content": "content",
-    "created_at": "2020-06-27T00:32:48.206Z",
-    "updated_at": "2020-06-27T00:32:48.206Z"
+    "title": "\u3147\u3139\u3147",
+    "content": "\u3134\u3147\u3139\u3134\u3147\u3139",
+    "created_at": "2020-06-27T00:49:33.658Z",
+    "updated_at": "2020-06-27T00:49:33.658Z"
   }
 },
 {
   "model": "articles.article",
   "pk": 2,
   "fields": {
-    "title": "123",
-    "content": "123123",
-    "created_at": "2020-06-27T00:34:15.870Z",
-    "updated_at": "2020-06-27T00:34:15.871Z"
+    "title": "\u3134\u3147\u3139\u3134\u3147\u3139",
+    "content": "\u3134\u3147\u3139\u3134\u3139\u3134\u3147\u3139",
+    "created_at": "2020-06-27T00:49:45.638Z",
+    "updated_at": "2020-06-27T00:49:45.638Z"
   }
 },
 {
   "model": "articles.article",
   "pk": 3,
   "fields": {
-    "title": "123123123213",
-    "content": "123123123",
-    "created_at": "2020-06-27T00:34:20.372Z",
-    "updated_at": "2020-06-27T00:34:23.806Z"
+    "title": "\u3142\u3148\u3142\u3148\u3137",
+    "content": "\u3148\u3139\u3134\u3147\u3139\u3134\u3147\u3139",
+    "created_at": "2020-06-27T00:49:53.632Z",
+    "updated_at": "2020-06-27T00:49:53.632Z"
   }
 },
 {
   "model": "articles.article",
   "pk": 4,
   "fields": {
-    "title": "123123",
-    "content": "123213",
-    "created_at": "2020-06-27T00:34:27.958Z",
-    "updated_at": "2020-06-27T00:34:27.958Z"
+    "title": "\u3134\u3147\u3139\u3134\u3147\u3139",
+    "content": "\u3134\u3147\u3139\u3134\u3147\u3139",
+    "created_at": "2020-06-27T00:49:57.696Z",
+    "updated_at": "2020-06-27T00:49:57.696Z"
   }
 },
 {
   "model": "articles.article",
   "pk": 5,
   "fields": {
-    "title": "123123",
-    "content": "123123",
-    "created_at": "2020-06-27T00:34:31.620Z",
-    "updated_at": "2020-06-27T00:34:31.620Z"
+    "title": "\u3134\u3147\u3139\u3134\u3147\u3139",
+    "content": "\u3134\u3147\u3139\u3134\u3139\u3134\u3147\u3147\u3134",
+    "created_at": "2020-06-27T00:50:05.674Z",
+    "updated_at": "2020-06-27T00:50:05.674Z"
   }
 },
 {
   "model": "articles.article",
   "pk": 6,
   "fields": {
-    "title": "13213",
-    "content": "1231231",
-    "created_at": "2020-06-27T00:34:35.896Z",
-    "updated_at": "2020-06-27T00:34:35.896Z"
+    "title": "\u3134\u3147\u3139\u3134\u3147\u3139\u3134\u3139\u3147",
+    "content": "\u3147\u3139\u3134\u3147\u3134\u3147\u3139\u3134\u3139",
+    "created_at": "2020-06-27T00:50:10.166Z",
+    "updated_at": "2020-06-27T00:50:10.166Z"
   }
 }
 ]
