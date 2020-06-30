@@ -8,6 +8,9 @@
   <p>내용 : {{ article.content }}</p>
   <p>작성 시각 : {{ article.created_at }}</p>
   <p>수정 시각 : {{ article.updated_at }}</p>
+  <p>위도 : {{ article.lat }}</p>
+  <p>경도 : {{ article.lng }}</p>
+  <div id="map" style="width:500px;height:400px;"></div>
   <hr>
   <a class="btn btn-warning" href="{% url 'articles:update' article.pk %}">update</a>
   <form action="{% url 'articles:delete' article.pk %}" method='POST'>
@@ -15,4 +18,37 @@
     <button class="btn btn-danger">delete</button>
   </form>
   <a class="btn btn-secondary" href="{% url 'articles:index' %}">back</a>
+
+<script>
+var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+var options = { //지도를 생성할 때 필요한 기본 옵션
+   center: new kakao.maps.LatLng({{ article.lat }}, {{ article.lng }}), //지도의 중심좌표.
+   level: 3, //지도의 레벨(확대, 축소 정도)
+  draggable: false,
+
+};
+
+var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+
+// 내가 찍은 위치에 마커 찍긔 
+// 마커가 표시될 위치입니다 
+//var markerPosition  = new kakao.maps.LatLng({{ article.lat }}, {{ article.lng }}); 
+//지금 지도의 센터를 찍어줌. 위에 것과 같은 기능
+var markerPosition = map.getCenter();  
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+    position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+
+
+</script>
+
+
+
+
 {% endblock %}

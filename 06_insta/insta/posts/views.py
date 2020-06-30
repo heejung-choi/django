@@ -37,7 +37,7 @@ def like(request, pk):
     # user.like_posts => user가 좋아요 버튼을 누른 게시물들
     # post.like_users => post에 좋아요 버튼을 누른 유저들
     if post in user.like_posts.all():
-        # 이미 누른경우
+        # 이미 누른경우.
         user.like_posts.remove(post)
         liked = False
     else:
