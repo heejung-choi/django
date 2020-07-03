@@ -12,7 +12,7 @@ chardet==3.0.4
 click==7.1.2
 decorator==4.4.2
 dj-database-url==0.5.0
-Django==2.1.15
+Django==2.2.13
 django-appconf==1.0.4
 django-bootstrap-pagination==1.7.1
 django-bootstrap4==2.1.1
