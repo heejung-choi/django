@@ -7,7 +7,7 @@ from .forms import MovieForm, CommentForm
 def index(request):
     movie = Movie.objects.all()
     context = {
-        'movie': movie,
+        'movie': movie,s
     }
     return render(request, 'movies/index.html', context)
 

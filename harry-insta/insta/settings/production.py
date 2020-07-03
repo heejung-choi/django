@@ -1,0 +1,23 @@
+from decouple import config
+from .base import *
+
+
+SECRET_KEY = config('SECRET_KEY')
+
+DEBUG = False
+
+ALLOWED_HOSTS = [
+    'agile-sands-54334.herokuapp.com',
+]
+
+ADMIN_ENABLED = False
+
+DAY_IN_SECONDS = 86400
+SESSION_COOKIE_AGE = DAY_IN_SECONDS
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+SECURE_SSL_REDIRECT = True
+X_FRAME_OPTIONS = 'DENY'

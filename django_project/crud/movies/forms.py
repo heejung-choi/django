@@ -105,7 +105,7 @@ class MovieForm(forms.ModelForm):
     class Meta:
         model = Movie        
         fields = '__all__'
-
+#exclude = ['',]
 class CommentForm(forms.ModelForm):
 
     class Meta:

@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load humanize %}
+
+{% block content %}
+  <div class="card mb-3" >
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="{{ post.image.url }}" class="card-img" alt="{{ post.image }}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body h-100">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">{{ post.content }}</p>
+          <p class="card-text"><small class="text-muted">{{ post.updated_at|naturaltime }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  
+  <!-- 댓글 종합 -->
+  {% for comment in comments %}
+    <!-- 댓글 리스트 -->
+    <p>{{ comment.content }}</p>
+    <!-- 대댓글 리스트 -->
+    {% for reply in comment.replies.all %}
+      <p><small class="text-muted mr-5"><i class="fas fa-angle-right ml-2 mr-2"></i>{{ reply.content }}</small></p>
+    {% endfor %}
+    <!-- 대댓글 form -->
+    {% if request.user.is_authenticated %}
+      <a class="btn btn-info btn-sm" data-toggle="collapse" href="#collapseExample-{{comment.pk}}" role="button" aria-expanded="false" aria-controls="collapseExample">대댓글 작성</a>
+      <div class="collapse mt-2" id="collapseExample-{{comment.pk}}">
+        <form action="{% url 'posts:comment_create' post.pk %}" method="POST">
+          <input type="hidden" name="parent_pk" value="{{ comment.pk }}">
+          {% csrf_token %}
+          <div class="form-row">
+            {% for field in comment_form %}
+              {{ field.errors }}
+              <div class="input-group input-group-sm col-8 mb-2 my-1">
+                <div class="input-group-prepend">
+                  <div class="input-group-text"><i class="far fa-comments mr-1"></i> {{ comment.content }}</div>
+                </div>
+                {{ field }}
+              </div>
+            {% endfor %}
+            <div class="col-auto mb-2 my-1">
+              <button type="submit" class="btn btn-success btn-sm col-auto">대댓글</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    {% endif %}
+    <hr>
+  {% empty %}
+    <p><small class="text-muted">댓글이 없어요.</small></p>
+  {% endfor %}
+
+  <!-- 댓글 작성 form -->
+  {% if request.user.is_authenticated %}
+    <form action="{% url 'posts:comment_create' post.pk %}" method="POST">
+      {% csrf_token %}
+      {% for field in comment_form %}
+        <div class="form-row align-items-center justify-content-between">
+          <div class="col-8 col-md-10 my-1">
+            {{ field.errors }}
+            {{ field }}
+          </div>
+          <div class="col-auto my-1">
+            <button class="btn btn-primary btn-sm">Submit</button>
+          </div>
+        </div>
+      {% endfor %}
+    </form>
+  {% else %}
+    <a href="{% url 'accounts:login' %}" class="text-decoration-none">댓글을 작성하려면 로그인 하세요.</a>
+  {% endif %}
+
+{% endblock %}
