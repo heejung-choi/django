@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/main.css'%}">
+{% endblock  %}
+{% block header  %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <img class="navbar-brand logo" src="{% static "img/logo.png" %}" width="20%" onClick="{% url 'index' %}">
+  {% comment %} <a class="navbar-brand" href="#">Navbar</a> {% endcomment %}
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+{% endblock  %}
+{% block content %}
+<div class="stamp text-center">
+<img class="navbar-brand logo stamplogo" src="{% static "img/stamp4.png" %}" width="15%" alt="">
+<span class="stamptext">테마: 1개</span>
+<img class="navbar-brand logo stamplogo" src="{% static "img/stamp5.png" %}" width="15%" alt="">
+<span>스팟: 10개</span>
+</div>
+
+<div class="stampmain">
+<div class="stampback" style="background-image: url('{% static "img/stampback.png" %}');">    
+    <div class="stamp1">        
+        <div class="container text-center">
+        <div class="row row-cols-1">
+            <div class="col stamptop"><h4>다소니 스탬프 투어</h5></div>           
+        </div>    
+        </div>
+        <!--테마투어 시작-->
+        <div class="stamphead">
+            <div class="container">
+            <div class="row row-cols-1">
+                <div class="col"><h6>[테마 투어]</h6></div>           
+            </div>    
+            </div>
+            <div class="container text-center">
+            <div class="row row-cols-3">
+                <div class="col"><img src="{% static "img/방탄소년단.jpg" %}" width="90%" height="100%" class="rounded-circle"></div>
+                <div class="col"><img src="{% static "img/무한도전.jpg" %}" width="90%" height="100%" class="rounded-circle"></div>
+                <div class="col"><img src="{% static "img/stampnull.png" %}" width="90%" height="100%" class="rounded-circle"></div>
+            </div>    
+            </div>
+            <div class="container text-center">
+            <div class="row row-cols-3">
+                <div class="col coltext"><span class="stamp1text">BTS</span></div>
+                <div class="col coltext"><span class="stamp1text">무한도전</span></div>
+                <div class="col coltext"><span class="stamp1text"></span></div>
+            </div>    
+            </div>
+            <div class="container text-center">
+            <div class="row row-cols-3">
+                <div class="col coltext"><span class="stamp1text">역사탐방</span></div>
+                <div class="col coltext"><span class="stamp1text">미드나잇 서울</span></div>
+                <div class="col coltext"><span class="stamp1text"></span></div>
+            </div>    
+            </div>
+            <div class="container text-center">
+            <div class="row row-cols-3">
+                <div class="col coltext"><span class="stamp1text">20.07.07</span></div>
+                <div class="col coltext"><span class="stamp1text">20.07.08</span></div>
+                <div class="col coltext"><span class="stamp1text"></span></div>
+            </div>    
+            </div>
+
+            
+        </div>
+        <!--테마투어 끝-->
+         <!--테마투어 시작-->
+         <br>
+        <div class="stamphead">
+            <div class="container">
+            <div class="row row-cols-1">
+                <div class="col"><h6>[스팟 투어]</h6></div>           
+            </div>    
+            </div>
+            <div class="container text-center">
+            <div class="row row-cols-4">
+                <div class="col"><img src="{% static "img/방탄소년단2.jpg" %}" width="100%" height="100%" class="rounded-circle"></div>
+                <div class="col"><img src="{% static "img/방탄소년단3.jpg" %}" width="100%" height="100%" class="rounded-circle"></div>
+                <div class="col"><img src="{% static "img/방탄소년단4.jpg" %}" width="100%"  height="100%" class="rounded-circle"></div>
+                <div class="col"><img src="{% static "img/무한도전2.jpg" %}" width="100%" height="100%" class="rounded-circle"></div>
+               
+            </div>    
+            </div>
+            <div class="container text-center">
+            <div class="row row-cols-4">
+                <div class="col coltext"><span class="stamp2text">BTS 양주일영역</span></div>
+                <div class="col coltext"><span class="stamp2text">BTS 춘천강촌역</span></div>
+                <div class="col coltext"><span class="stamp2text">BTS 향호해변</span></div>
+                <div class="col coltext"><span class="stamp2text">무한도전 통인시장</span></div>
+                
+            </div>    
+            </div>
+            <div class="container text-center">
+            <div class="row row-cols-4">
+                <div class="col coltext"><span class="stamp2text">20.07.07</span></div>
+                <div class="col coltext"><span class="stamp2text">20.07.07</span></div>
+                <div class="col coltext"><span class="stamp2text">20.07.07</span></div>
+                <div class="col coltext"><span class="stamp2text">20.07.08</span></div>
+  
+            </div>    
+            </div>
+            
+
+            <div class="container text-center">
+            <div class="row row-cols-4">
+                <div class="col"><img src="{% static "img/무한도전3.jpg" %}" width="100%" height="100%" class="rounded-circle"></div>
+                <div class="col"><img src="{% static "img/무한도전4.jpg" %}" width="100%" height="100%" class="rounded-circle"></div>
+                <div class="col"><img src="{% static "img/경복궁1.jpg" %}" width="100%" height="100%" class="rounded-circle"></div>
+                <div class="col"><img src="{% static "img/stampnull.png" %}" width="100%" height="100%" class="rounded-circle"></div>
+               
+            </div>    
+            </div>
+            <div class="container text-center">
+            <div class="row row-cols-4">
+                <div class="col coltext"><span class="stamp2text">무한도전 덕수궁</span></div>
+                <div class="col coltext"><span class="stamp2text">무한도전 한옥마을</span></div>
+                <div class="col coltext"><span class="stamp2text">궁투어 경복궁</span></div>
+                <div class="col coltext"><span class="stamp2text"></span></div>
+                
+            </div>    
+            </div>
+            <div class="container text-center">
+            <div class="row row-cols-4">
+                <div class="col coltext"><span class="stamp2text">20.07.08</span></div>
+                <div class="col coltext"><span class="stamp2text">20.07.08</span></div>
+                <div class="col coltext"><span class="stamp2text">20.07.09</span></div>
+                <div class="col coltext"><span class="stamp2text"></span></div>
+  
+            </div>    
+            </div>
+
+
+            <div class="container text-center">
+            <div class="row row-cols-4">
+                <div class="col"><img src="{% static "img/stampnull.png" %}" width="100%" height="100%" class="rounded-circle"></div>
+                <div class="col"><img src="{% static "img/stampnull.png" %}" width="100%" height="100%" class="rounded-circle"></div>
+                <div class="col"><img src="{% static "img/stampnull.png" %}" width="100%" height="100%" class="rounded-circle"></div>
+                <div class="col"><img src="{% static "img/stampnull.png" %}" width="100%" height="100%" class="rounded-circle"></div>
+               
+            </div>    
+            </div>
+            <div class="container text-center">
+            <div class="row row-cols-4">
+                <div class="col coltext"><span class="stamp2text"></span></div>
+                <div class="col coltext"><span class="stamp2text"></span></div>
+                <div class="col coltext"><span class="stamp2text"></span></div>
+                <div class="col coltext"><span class="stamp2text"></span></div>
+                
+            </div>    
+            </div>
+            <div class="container text-center">
+            <div class="row row-cols-4">
+                <div class="col coltext"><span class="stamp2text"></span></div>
+                <div class="col coltext"><span class="stamp2text"></span></div>
+                <div class="col coltext"><span class="stamp2text"></span></div>
+                <div class="col coltext"><span class="stamp2text"></span></div>
+  
+            </div>    
+            </div>
+        </div>
+        <!--테마투어 끝-->
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+{% endblock  %}
+{% block footer %}
+{% endblock  %}

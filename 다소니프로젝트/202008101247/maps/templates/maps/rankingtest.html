@@ -1,0 +1,340 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+<link rel="stylesheet" href="{% static 'css/main.css'%}">
+{% block style %}
+    <style>
+        .navbar-brand.logo{
+            margin-left: 10rem;
+        }
+        p{ 
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        ul { list-style: none; }
+        a { text-decoration: none; color: black;}
+        body {
+        font-family: 'Dosis', sans-serif;
+        background: white;
+        }   
+        #dasoni-rapper { /*햄버거 상자*/
+            overflow: hidden;
+            float: right;
+            max-width: 55px;
+            border:1px solid rgb(60, 61, 60);
+            cursor: pointer;
+            
+        }
+
+
+        #dasoni-rapper #dasoniham-menu { /*햄버거 바*/
+            position: relative;
+            width: 25px;
+            height: 20px;
+            margin: 15px;
+        }
+
+        #dasoni-rapper #dasoniham-menu span {/*햄버거*/
+            opacity: 1;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 2px;
+            border-radius: 10px;
+            color: black;
+            background-color: rgb(60, 61, 60); 
+            position: absolute;
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+            -webkit-transition: .4s ease-in-out;
+            transition: .4s ease-in-out;
+        }
+
+        #dasoni-rapper #dasoniham-menu span:nth-child(1) {
+            top: 0;
+        }
+        #dasoni-rapper #dasoniham-menu span:nth-child(2) {
+            top: 9px;
+        }
+        #dasoni-rapper #dasoniham-menu span:nth-child(3) {
+            top: 18px;
+        }
+        #dasoni-rapper #dasoniham-menu.open span:nth-child(1) {
+            top: 9px;
+            -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+        }
+        #dasoni-rapper #dasoniham-menu.open span:nth-child(2) {
+            opacity: 0;
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+            left: -60px;
+        }
+        #dasoni-rapper #dasoniham-menu.open span:nth-child(3) {
+            top: 9px;
+            -webkit-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+        }
+
+        #dasoni-basket .dasoni-list .menu-submenu {
+            padding:0;
+        }
+        #dasoni-basket .dasoni-list .menu-submenu li a {
+            display:block;
+            padding:10px 0 10px 20px;
+
+        }
+        #dasoni-basket .dasoni-list .menu-submenu li a:hover {
+            background:white;
+        }
+        #dasoni-basket .dasoni-list {
+            padding-left: 0;
+            display: block;
+            position: absolute;
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            box-shadow: rgba(100,100,100,0.2) 6px 2px 10px;
+            z-index: 999;
+            overflow-y: auto;
+            overflow-x: hidden;
+            right: 100%;
+        }
+
+        #dasoni-basket .dasoni-list li.accordion-toggle, #dasoni-basket .dasoni-list .menu-login {/*메뉴바 넓이*/
+            font-size: 16px;
+            padding: 20px;
+            text-transform: uppercase;
+            border-top: 1px solid #dbdcd2;
+        }
+         #dasoni-basket .dasoni-list li.accordion-toggle1, #dasoni-basket .dasoni-list .menu-login {/*다소니 */
+            font-size: 20px;
+            background: #003366;
+
+            padding: 20px;
+            text-transform: uppercase;
+            border-top: 1px solid #dbdcd2;
+        }
+         #dasoni-basket .dasoni-list li.accordion-toggle2, #dasoni-basket .dasoni-list .menu-login {/*마이페이지 */
+            font-size: 16px;
+            padding: 20px;
+            text-transform: uppercase;
+            border-top: 1px solid #dbdcd2;
+        }
+        #dasoni-basket .dasoni-list li:first-of-type {
+            border-top: 0;
+        }
+
+        .accordion-toggle, .accordion-content {/*1,3 십자가*/
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        .accordion-content {
+            display: none;
+        }
+
+        .accordion-toggle a:before, .accordion-toggle a:after {/*십자가*/
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            right: 30px;
+            width: 15px;
+            height: 2px;
+            margin-top: -1px;
+            background-color: #5a5858;
+            -webkit-transform-origin: 50% 50%;
+            -ms-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s ease-out;
+        }
+
+        .accordion-toggle a:before {
+            -webkit-transform: rotate(-90deg);
+            -ms-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .accordion-toggle.active-tab {
+        background: #ff6666;
+        transition: all 0.3s ease;
+        }
+        .accordion-toggle a.active:before {
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+            background: #fff !important;
+        }
+
+        .accordion-toggle a.active:after {
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+            background: #fff !important;
+            opacity: 0;
+        }
+    </style>
+{% endblock  %}
+<!--20200803 eunha header 로그인-->
+{% block header  %}
+ <!-- 헤더(로고와NAV) -->
+        <div id="dasoni-basket">
+            <img class="navbar-brand logo" src="{% static "img/logo.png" %}" width="20%" alt="">
+            <div id="dasoni-rapper">
+                <div id="dasoniham-menu"><span></span><span></span><span></span></div>
+                <!-- dasoniham-menu -->
+            </div>
+            <!-- dasoni-rapper 메뉴바-->
+            <ul class="dasoni-list accordion">
+                {% if user.is_authenticated %}  
+                    <li id="nav0" class="toggle accordion-toggle1"> 
+                        <span class="icon-plus"></span>
+                        <a class="menu-link" style="color:white">{{ user.name_kr }}님 반갑습니다!</a>
+                    </li> 
+                    <li id="nav1" class="toggle accordion-toggle"> 
+                        <span class="icon-plus"></span>
+                        <a class="menu-link" href="#">MY PAGE</a>
+                    </li>   
+                    <ul class="menu-submenu accordion-content">
+                        <li><a class="head" href="#">프로필 관리</a></li>
+                        <li><a class="head" href="#">장바구니</a></li>
+                        <li><a class="head" href="#">여행기록</a></li>
+                    </ul> 
+                    
+                    <li id="nav1" class="toggle accordion-toggle"> 
+                        <span class="icon-plus"></span>
+                        <a class="menu-link" href="#">다소니</a>
+                    </li>   
+                    <ul class="menu-submenu accordion-content">
+                        <li><a class="head" href="#">ABOUT 다소니</a></li>
+                        <li><a class="head" href="#">고객센터</a></li>
+                    </ul> 
+                
+                    <li id="nav0" class="toggle accordion-toggle2"> 
+                        <span class="icon-plus"></span>
+                        <form action="{% url 'accounts:logout' %}" method="POST" id="logout">
+                        {% csrf_token %}
+                        <a href="#" onclick="document.getElementById('logout').submit()">로그아웃</a>
+                        </form>
+                    </li>
+                {% else %}
+                    <li id="nav0" class="toggle accordion-toggle1"> 
+                        <span class="icon-plus"></span>
+                        <a class="menu-link" href="{% url 'accounts:login' %}" style="color:white">로그인을 해주세요!</a>
+                    </li> 
+                    
+                    <li id="nav1" class="toggle accordion-toggle"> 
+                        <span class="icon-plus"></span>
+                        <a class="menu-link" href="#">다소니</a>
+                    </li>   
+                    <ul class="menu-submenu accordion-content">
+                        <li><a class="head" href="#">ABOUT 다소니</a></li>
+                        <li><a class="head" href="#">고객센터</a></li>
+                    </ul> 
+                {% endif %}   
+            </ul>
+            <!-- dasoni-list accordion-->
+        </div>
+
+
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>    
+    <script>
+        $(function() {
+             jQuery.noConflict(); 
+            function slideMenu() {
+                var activeState = $("#dasoni-basket .dasoni-list").hasClass("active");
+                $("#dasoni-basket .dasoni-list").animate({left: activeState ? "0%" : "-100%"}, 400);
+            }
+            $("#dasoni-rapper").click(function(event) {
+                event.stopPropagation();
+                $("#dasoniham-menu").toggleClass("open");
+                $("#dasoni-basket .dasoni-list").toggleClass("active");
+                slideMenu();
+
+                $("body").toggleClass("overflow-hidden");
+            });
+
+            $(".dasoni-list").find(".accordion-toggle").click(function() {
+                $(this).next().toggleClass("open").slideToggle("fast");
+                $(this).toggleClass("active-tab").find(".menu-link").toggleClass("active");
+
+                $(".dasoni-list .accordion-content").not($(this).next()).slideUp("fast").removeClass("open");
+                $(".dasoni-list .accordion-toggle").not(jQuery(this)).removeClass("active-tab").find(".menu-link").removeClass("active");
+            });
+        }); // jQuery load
+    </script>
+{% endblock %}
+<!--20200806 eunha ranking map-->    
+{% block content %}
+<h3>위치기반 스탬프 테스트</h3>
+<div id="map" style="width:500px;height:400px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	5421bd4258f972d45ae4b537b7adb43c"></script>
+
+
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 10 // 지도의 확대 레벨 
+    }; 
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+if (navigator.geolocation) {
+    
+    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+    navigator.geolocation.getCurrentPosition(function(position) {
+        
+        var lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+        
+        var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+            message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+        
+        // 마커와 인포윈도우를 표시합니다
+        displayMarker(locPosition, message);
+            
+      });
+    
+} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+    
+    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+        message = 'geolocation을 사용할수 없어요..'
+        
+    displayMarker(locPosition, message);
+}
+
+// 지도에 마커와 인포윈도우를 표시하는 함수입니다
+function displayMarker(locPosition, message) {
+
+    // 마커를 생성합니다
+    var marker = new kakao.maps.Marker({  
+        map: map, 
+        position: locPosition
+    }); 
+    
+    var iwContent = message, // 인포윈도우에 표시할 내용
+        iwRemoveable = true;
+
+    // 인포윈도우를 생성합니다
+    var infowindow = new kakao.maps.InfoWindow({
+        content : iwContent,
+        removable : iwRemoveable
+    });
+    
+    // 인포윈도우를 마커위에 표시합니다 
+    infowindow.open(map, marker);
+    
+    // 지도 중심좌표를 접속위치로 변경합니다
+    map.setCenter(locPosition);      
+}    
+</script>
+{% endblock  %}

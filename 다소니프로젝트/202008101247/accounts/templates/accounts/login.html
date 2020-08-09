@@ -1,0 +1,66 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min (2).css'%}">
+{% load bootstrap4 %}
+{% block style %}
+<style>
+@media all and (min-width:320px){
+body{
+    margin-top: 50rem;
+    text-align: center;
+    background: #adc2eb;
+}
+.form-control{
+    width: 50%;
+    margin-left: 15rem;
+    
+}
+}
+</style>
+{% endblock  %}
+{% block content %}
+<!--20200803 eunha 로그인-->
+{% if request.resolver_match.url_name == 'signup' %}
+    <h1>회원가입</h1>
+{% else %}
+       <!--login Form-->
+    <img class="navbar-brand logo" src="{% static "img/logo.png" %}" width="20%" alt=""> 
+    <br><br>
+    <div>
+        <form action="{% url 'accounts:login' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" class="form-control" placeholder="아이디" >
+            <input type="password" name="password" class="form-control" placeholder="비밀번호">
+            <br><br>
+            <button type="submit" class="btn btn-info"><a class="btn"  style="text-decoration:none;">Sign in</a></button>
+            
+            <button type="submit" class="btn btn-warning"><a class="btn" href="{% url 'accounts:signup' %}" style="text-decoration:none;">Sing up</a></button>
+        </form>
+    </div>
+{% endif %}
+      
+{% comment %} <form action="" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+<button class="btn btn-primary">저장</button>
+  </form> {% endcomment %}
+    {% comment %} {% comment %} <div>
+     <!-- logout Form -->
+        <form action="{% url 'accounts:logout' %}" method="post">
+            {% csrf_token %}
+            <h4>로그아웃 하시겠습니까?</h4>
+            <button type="submit">로그아웃</button>
+        </form>
+    </div> {% endcomment %}
+{% comment %} {% else %}    
+     <!--login Form-->
+    <div>
+        <form action="{% url 'accounts:login' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" class="form-control" placeholder="아이디">
+            <input type="password" name="password" class="form-control" placeholder="비밀번호">
+            <button type="submit">로그인</button>
+            <a class="btn" href="{% url 'accounts:signup' %}" style="text-decoration:none;">회원가입</a>
+        </form>
+    </div>
+{% endif %}               {% endcomment %} 
+{% endblock  %}
