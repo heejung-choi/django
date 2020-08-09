@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- 20200804 gyuyoung weather api -->
+    <!-- 해야할 것 : img 크기 조정 + 섭씨(도) 나타내기-->
+    <div id="demo"></div>
+
+    <!--
+        // weather widget start 
+    <a target="_blank" href="https://booked.kr/weather/seoul-18406">
+        <img src="https://w.bookcdn.com/weather/picture/25_18406_1_24_ecf0f1_250_bdc3c7_9da2a6_ffffff_1_2071c9_ffffff_0_6.png?scode=2&domid=593&anc_id=73570" alt="booked.net"/>
+    </a>
+
+    <a target="_blank" href="https://booked.kr/weather/seoul-18406">
+        <img src="https://w.bookcdn.com/weather/picture/26_18406_1_24_ecf0f1_250_bdc3c7_9da2a6_ffffff_1_2071c9_ffffff_0_6.png?scode=2&domid=593&anc_id=59782"  alt="booked.net"/>
+    </a>
+        // weather widget end -->
+
+    
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <script>
+        let latitude, longitude;
+
+        navigator.geolocation.getCurrentPosition(position =>{
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+
+            //console.log(`${latitude}`);
+            fetch(
+                `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=0d98d57b7d9f3de1f8d23d65feaa32a2&units=metric`
+            ).then(response => {
+                return response.json();
+            }).then(json => {
+                var temp = Math.round(json.main.temp);
+                var src='';
+                var icon = "<img src='"+src+"'>";
+                if(temp<=0){
+                // 0 : 실내관광
+                    src = '{% static 'img_weather/home.png' %}';
+                }else if(temp<=5 & temp>=1){
+                // 1~5 : 야상, 패딩, 목도리, 장갑
+                    src = '{% static 'img_weather/fleece.png' %}';
+                    icon = "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/gloves.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/mustang.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/padding.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/scarf.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/hat.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/sweater.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/sweater1.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/vest.png' %}';
+                    icon += "<img src='"+src+"'>";
+                }else if(temp<=9 & temp>=6){
+                // 6~9 : 코트, 가죽자켓
+                    src = '{% static 'img_weather/fleece.png' %}';
+                    icon = "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/mustang.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/padding.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/sweater.png' %}';
+                    icon += "<img src='"+src+"'>";
+                }else if(temp<=16 & temp>=12){
+                // 12~16 : 자켓, 셔츠, 가디건, 간절기 야상, 살색 스타킹
+                    src = '{% static 'img_weather/coat.png' %}';
+                    icon = "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/cardigan.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/hoodie2.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/jacket2.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/suit.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/denim-jacket.png' %}';
+                    icon += "<img src='"+src+"'>";
+                }else if(temp<=19 & temp>=17){
+                // 17~19 : 니트, 가디건, 후드티, 맨투맨, 청바지, 면바지, 슬랙스, 원피스
+                    src = '{% static 'img_weather/hoodie.png' %}';
+                    icon = "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/dress3.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/cardigan.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/jacket.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/top.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/pants.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/shirts.png' %}';
+                    icon += "<img src='"+src+"'>";
+                }else if(temp<=22 & temp>=20){
+                // 20~22 : 긴팔티, 가디건, 후드티, 면바지, 슬랙스, 스키니
+                    src = '{% static 'img_weather/hoodie.png' %}';
+                    icon = "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/cardigan.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/shirt.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/shirts.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/dress2.png' %}';
+                    icon += "<img src='"+src+"'>";
+                }else if(temp<=26 & temp>=23){
+                // 23~26 : 반팔, 얇은 셔츠, 얇은 긴팔, 반바지, 면바지
+                    src = '{% static 'img_weather/shortshirts.png' %}';
+                    icon = "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/shortshirts2.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/shorts.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/blouse.png' %}';
+                    icon += "<img src='"+src+"'>";
+  
+                }else if(temp<=30 & temp>=27){
+                // 27~30 : 나시티, 반바지, 민소매 원피스
+                    src = '{% static 'img_weather/jersey.png' %}';
+                    icon = "<img src='"+src+"'>"
+                    src = '{% static 'img_weather/dress6.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/shorts.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/shortshirts.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/shortshirts2.png' %}';
+                    icon += "<img src='"+src+"'>";
+                    src = '{% static 'img_weather/shortshirts2.png' %}';
+                    icon += "<img src='"+src+"'>";
+                }else{
+                // 30~ : 실내관광
+                    src = '{% static 'img_weather/home.png' %}';
+                }
+                
+
+                document.getElementById('demo').innerHTML = temp + icon;
+                //console.log(json.main.temp);
+            })
+        })
+        
+    </script>
+
+{% endblock %}

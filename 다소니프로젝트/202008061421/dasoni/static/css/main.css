@@ -1,0 +1,96 @@
+@media all and (min-width:320px){
+
+.carousel-content { 
+position: absolute; 
+bottom: 10%;  
+left: 5%;  
+z-index: 20;  
+color: white;  
+text-shadow: 0 1px 2px rgba(0,0,0,.6); 
+}
+
+.footer {
+display:flex;
+flex-direction:row;
+padding: 5%;
+}
+
+.footer div{
+width:20%
+}
+.mainicon{
+display:flex;
+flex-direction:row;
+padding-top: 5%;
+padding-bottom:5%;
+padding-left:10%;
+padding-right:10%;
+}
+
+.mainicon div{
+width:33.33%
+}
+
+.mainicontext{
+padding-top:5%;
+font-size: 125%;
+font-weight: bold;
+}
+
+.footericontext{
+padding-top:5%;
+font-size: 100%;
+font-weight: bold;  
+}
+.goods{
+    display:flex;
+    justify-content:space-around;
+    flex-direction:row;
+    padding-top: 5%;
+    padding-bottom:5%;
+    padding-left:10%;
+    padding-right:10%;
+}
+
+.goods div{
+    width:45%;
+}
+
+.goodsboxtext{
+    font-size: 80%;
+
+}
+
+.goodsprice{   
+    color: red; 
+}
+
+.tip{
+    display:flex;
+    justify-content:space-around;
+    flex-direction:row;
+    padding-top: 2%;
+    padding-bottom:2%;
+    padding-left:5%;
+    padding-right:5%;
+}
+
+.tip div{
+    width:30%;
+}
+
+.fa-home{
+    width:100px;
+}
+
+}
+@media all and (min-width:768px){
+body{
+background:white;
+}
+}
+@media all and (min-width:960px){
+body{
+background:white;
+}
+}

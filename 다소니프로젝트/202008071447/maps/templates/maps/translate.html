@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    .goog-trans{background:#f0f0f0}
+    .goog-trans-control{float:left;height:40px}
+    .goog-trans-control a{display:inline-block;padding:0 10px;height:40px;line-height:40px;background:#383838;color:#fff;text-align:center;text-decoration:none}
+    .goog-trans-info{float:left;margin:0 0 0 10px;height:40px;line-height:40px;color:#686868}
+    .goog-trans:after{display:block;visibility:hidden;clear:both;content:''}
+{% endblock %}
+{% block content %}
+<h1>{{ text }}</h1>
+    <!-- 페이지 업로드시 바로 번역-->
+    <!-- <script type="text/javascript">
+        google_initialized = false;
+
+        function google_auto_translate(){
+            if(google_initialized)
+            {
+                jQuery('a.goog-te-gadget-link')[0].click();
+            }
+            else if( jQuery('a.goog-te-gadget-link').length )
+            {
+                console.log('has button');
+                google_initialized = true;
+                setTimeout(google_auto_translate, 500);
+            }
+            else{
+                console.log('no button');
+                setTimeout(google_auto_translate, 100);
+            }
+        }
+
+        jQuery(document).ready(function(){
+            setTimeout(google_auto_translate, 1000);
+        });
+    </script> -->
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    
+    <h1>번역 가능한가요?</h1>
+    <div id="google_translate_element"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'ko'}, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    
+{% endblock %}

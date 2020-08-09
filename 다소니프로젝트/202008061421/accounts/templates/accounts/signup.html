@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block style %}
+<style>
+@media all and (min-width:320px){
+body{
+
+}
+
+
+
+
+
+}
+</style>
+
+{% endblock  %}
+{% block content %}
+  {% comment %} <!-- Search Modal -->
+      <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <!-- Close Button -->
+              <button type="button" class="btn close-btn" data-dismiss="modal"><i class="fa fa-times"></i>로그인</button>
+              <!-- Form -->
+              <form action="{% url 'accounts:login' %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="username" class="form-control" placeholder="아이디">
+                <input type="password" name="password" class="form-control" placeholder="비밀번호">
+                <button type="submit">SingIn</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div> {% endcomment %}
+
+
+  <!--Sign up 회원가입-->
+        <div class="contact-heading">
+              <h3>회원가입</h3>
+        </div>
+
+        <form action="{% url 'accounts:signup' %}" method="post" class="d-inline">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <button class="btn mona-btn btn-2 mt-15">가입</button>
+        </form>    
+{% endblock  %}

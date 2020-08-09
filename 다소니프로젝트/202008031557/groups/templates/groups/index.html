@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/main.css'%}">
+<style>
+@media all and (min-width:320px){
+body{
+background:black;    
+}
+}
+@media all and (min-width:768px){
+body{
+background:red;
+}
+}
+@media all and (min-width:960px){
+body{
+background:blue;
+}
+}
+</style>
+{% endblock  %}
+{% block body %}
+<h1>hello</h1>
+{% endblock  %}
