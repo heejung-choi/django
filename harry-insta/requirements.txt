@@ -36,7 +36,7 @@ pathspec==0.8.0
 pexpect==4.8.0
 pickleshare==0.7.5
 pilkit==2.0
-Pillow==7.1.2
+Pillow==9.0.0
 prompt-toolkit==3.0.5
 psycopg2==2.7.5
 psycopg2-binary==2.8.5
